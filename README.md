@@ -31,4 +31,4 @@ A CLI tool to quickly bootstrap a **Vite + React** project with extra tools and 
 > Make sure you have **Node.js >= 18** installed.
 
 ```bash
-npm install -g create-vrx
+npm install create-vrx
