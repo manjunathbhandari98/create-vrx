@@ -1,0 +1,39 @@
+name: CI Workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Lint the code
+      - name: Run lint
+        run: npm run lint
+
+      # 5. Build project (if you have a build step)
+      - name: Build project
+        run: npm run build
+
+      # 6. Test CLI command (replace `my-vite-cli` with your npm command/package name)
+      - name: Test CLI project creation
+        run: npx my-vite-cli create test-app
